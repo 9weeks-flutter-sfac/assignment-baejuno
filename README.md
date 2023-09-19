@@ -1,1 +1,5 @@
-# assignment-baejuno
+# Flutter Skill Up
+
+* [Assignment Day - 1](https://github.com/9weeks-flutter-sfac/assignment-baejuno/wiki/Assignment%E2%80%90Day%E2%80%901)
+* [Assignment Day - 2](https://github.com/9weeks-flutter-sfac/assignment-baejuno/wiki/Assignment%E2%80%90Day%E2%80%902)
+
