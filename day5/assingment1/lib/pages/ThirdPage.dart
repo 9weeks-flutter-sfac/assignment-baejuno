@@ -1,6 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, curly_braces_in_flow_control_structures
 
-import 'package:assingment4/pages/IconListView.dart';
+import 'package:assingment4/pages/IconListTile.dart';
 import 'package:flutter/material.dart';
 
 class ThirdPage extends StatefulWidget {
@@ -11,8 +11,11 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
-    //상태
-  bool reSet = false;
+  bool isSunActive = false;
+  bool isMoonActive = false;
+  bool isStarActive = false;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +26,25 @@ class _ThirdPageState extends State<ThirdPage> {
           children: [
             SizedBox(
               height: 240,
-              child: IconListView(isreSet: reSet),
+              child: ListView(
+              children: [
+              IconListTile( title: 'sun', isActive: isSunActive, onTap: () {setState(() { isSunActive = !isSunActive;});},),
+              IconListTile(title: 'moon',isActive: isMoonActive,onTap: () {setState(() {isMoonActive = !isMoonActive;});},),
+              IconListTile(title: 'star',isActive: isStarActive,onTap: () {setState(() {isStarActive = !isStarActive;});},),
+              TextField(
+                onSubmitted: (value) {
+                  setState(() {
+                    if (value == 'sun')
+                    isSunActive = !isSunActive;
+                    if (value == 'moon')
+                    isMoonActive = !isMoonActive;
+                    if (value == 'star')
+                    isStarActive = !isStarActive;
+                      });
+                    },
+                  )
+                ],
+              )
             ),
           ],
         ),
@@ -31,7 +52,9 @@ class _ThirdPageState extends State<ThirdPage> {
         child: Icon(Icons.refresh),
         onPressed: () {
             setState(() {
-              reSet = !reSet;
+               isSunActive = false;
+               isMoonActive = false;
+               isStarActive = false;
             });
         },
       ),

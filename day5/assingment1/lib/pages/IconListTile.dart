@@ -8,12 +8,12 @@ class IconListTile extends StatelessWidget {
     required this.title,
     required this.isActive,
     required this.onTap,
-    required this.isreSet
+
   });
   final String title;
   final bool isActive;
   final VoidCallback onTap;
-  final bool isreSet;
+
 
 
   @override
@@ -21,7 +21,7 @@ class IconListTile extends StatelessWidget {
 
     return ListTile(
       title: Text(title),
-      iconColor: (isActive && !isreSet) ? Colors.red : null,
+      iconColor: isActive ? Colors.red : null,
       leading: const Icon(Icons.sunny),
       onTap: onTap,
     );
