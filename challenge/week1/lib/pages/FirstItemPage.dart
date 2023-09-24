@@ -1,7 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class FirstItemPage extends StatefulWidget {
-  const FirstItemPage({super.key});
+  const FirstItemPage({
+    Key? key,
+    required this.musicName,
+    required this.singer,
+    required this.imgPath,
+  }) : super(key: key);
+  final String musicName;
+  final String singer;
+  final String imgPath;
 
   @override
   State<FirstItemPage> createState() => _FirstItemPageState();
@@ -12,7 +23,7 @@ class _FirstItemPageState extends State<FirstItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Come with me'),
+        title: Text(widget.musicName),
         backgroundColor: Colors.black,
       ),
       body: Container(
@@ -26,15 +37,15 @@ class _FirstItemPageState extends State<FirstItemPage> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset('assets/images/music_come_with_me.png'),
+                child: Image.asset(widget.imgPath),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:8.0),
-                child: Text('Come with me',style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),),
+                child: Text(widget.musicName,style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:4.0,bottom: 8.0),
-                child: Text('Surfaces 및 salem ilese',style: TextStyle(color: Colors.white),),
+                child: Text(widget.singer,style: TextStyle(color: Colors.white),),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

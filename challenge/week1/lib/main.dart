@@ -5,9 +5,6 @@ import 'package:week1/pages/FirstItemPage.dart';
 import 'package:week1/Content.dart';
 import 'package:week1/MusicTile.dart';
 import 'package:flutter/material.dart';
-import 'package:week1/pages/FourthItemPage.dart';
-import 'package:week1/pages/SecondItemPage.dart';
-import 'package:week1/pages/ThirdItemPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,46 +56,10 @@ class _HomeState extends State<Home> {
         ),
         child: ListView(
           children: [
-            InkWell(
-              onTap:() {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>FirstItemPage()) 
-              );  
-            }, 
-              child: Content(musicName: "Come with me", singer:"Surfaces 및 salem ilese", time: "3:00", imgPath: 'assets/images/music_come_with_me.png',),
-            ),
-            InkWell(
-              onTap:() {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>SecondItemPage()) 
-              );  
-            }, 
-              child: Content(musicName: "Good day", singer:"Surfaces", time: "3:00", imgPath: 'assets/images/music_good_day.png',),
-            ),
-            InkWell(
-              onTap:() {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>ThirdItemPage()) 
-              );  
-            }, 
-              child: Content(musicName: "Honesty", singer:"Pink Sweat\$", time: "3:09", imgPath: 'assets/images/music_honesty.png',),
-            ),
-            InkWell(
-              onTap:() {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>FourthItemPage()) 
-              );  
-            }, 
-              child: Content(musicName: "I Wish I Missed My Ex", singer:"마할리아 버크마", time: "3:24", imgPath: 'assets/images/music_i_wish_i_missed_my_ex.png',),
-            ),
+            Content(musicName: "Come with me", singer:"Surfaces 및 salem ilese", time: "3:00", imgPath: 'assets/images/music_come_with_me.png',),
+            Content(musicName: "Good day", singer:"Surfaces", time: "3:00", imgPath: 'assets/images/music_good_day.png',),
+            Content(musicName: "Honesty", singer:"Pink Sweat\$", time: "3:09", imgPath: 'assets/images/music_honesty.png',),
+            Content(musicName: "I Wish I Missed My Ex", singer:"마할리아 버크마", time: "3:24", imgPath: 'assets/images/music_i_wish_i_missed_my_ex.png',),
           ],
         ),
       ),
