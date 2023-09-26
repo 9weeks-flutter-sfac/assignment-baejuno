@@ -6,6 +6,6 @@
 * [Assignment Day - 4](https://github.com/9weeks-flutter-sfac/assignment-baejuno/wiki/Assignment%E2%80%90Day%E2%80%904)
 * [Assignment Day - 5](https://github.com/9weeks-flutter-sfac/assignment-baejuno/wiki/Assignment%E2%80%90Day%E2%80%905)
 * [Assignment Day - 6](https://github.com/9weeks-flutter-sfac/assignment-baejuno/wiki/Assignment%E2%80%90Day%E2%80%906)
-
+* [Assignment Day - 7](https://github.com/9weeks-flutter-sfac/assignment-baejuno/wiki/Assignment%E2%80%90Day%E2%80%907)
 
 
