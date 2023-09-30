@@ -25,17 +25,23 @@ class _HomeoneState extends State<Homeone> {
   }
 
   Future<void> _loadData() async {
+    setState(() {
+      
+    });
     try {
       msgList = await getData();
 
     } catch (e) {
       print('오류가 발생 했습니다 : ${e}');
-    } finally {
+    } 
+  }
+
+  void _onRefresh() {
+    setState(() {
       _refreshController.refreshCompleted();
-    }
+    });
   }
   
-
   Widget _buildCardWithShimmer(int index) {
     return Card(
       child: Column(
@@ -76,11 +82,7 @@ class _HomeoneState extends State<Homeone> {
       appBar: AppBar(
         title: Text('8일차 과제'),
       ),
-      body: SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: true,
-        onRefresh: _loadData,
-        child: FutureBuilder(
+      body: FutureBuilder(
             future: _loadData(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
@@ -98,8 +100,11 @@ class _HomeoneState extends State<Homeone> {
                 );
               }
               else if (snapshot.connectionState == ConnectionState.done) {
-                print(msgList); 
-                return GridView.builder(
+                return SmartRefresher(
+                       controller: _refreshController,
+                        enablePullDown: true,
+                        onRefresh: _onRefresh,
+                        child:GridView.builder(
                         shrinkWrap: true,
                         itemCount: msgList.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(   
@@ -107,6 +112,7 @@ class _HomeoneState extends State<Homeone> {
                         crossAxisCount: 2,
                         ), 
                         itemBuilder: (BuildContext context, int index){
+                          return
                           Card(
                             child: Column(
                             children: [
@@ -133,6 +139,7 @@ class _HomeoneState extends State<Homeone> {
                       ),
                     );
                   }     
+                 )
                 );
               }
               else {
@@ -141,7 +148,6 @@ class _HomeoneState extends State<Homeone> {
               }
             },
           ),
-      ),
     );
   }
 }
