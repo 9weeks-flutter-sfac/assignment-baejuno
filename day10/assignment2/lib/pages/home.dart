@@ -4,7 +4,6 @@ import 'package:assignment2/pages/authorlist.dart';
 import 'package:assignment2/pages/postlist.dart';
 import 'package:assignment2/pages/write.dart';
 import 'package:flutter/material.dart';
-import 'package:secret_cat_sdk/api/api.dart';
 
 class Main extends StatefulWidget {
   const Main({super.key});
@@ -14,6 +13,42 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
+  // 추상화한 함수
+  Widget _buildButton(
+    final String imagePath,
+    final String text,
+    Function() onTap,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          width: 330,
+          height: 80,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white54,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0, bottom: 3, right: 10),
+                child: Image.asset(imagePath, height: 50),
+              ),
+              Text(
+                text,
+                style: TextStyle(fontFamily: "secrete", fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(width: 50),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,10 +57,13 @@ class _MainState extends State<Main> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/detective.png',width: 300,height: 150,),
+            Image.asset('assets/images/detective.png', width: 300, height: 150),
             Padding(
               padding: const EdgeInsets.all(6.0),
-              child: Text("레이튼의 소원 수리함", style: TextStyle(fontFamily: "secrete",fontSize: 20,fontWeight: FontWeight.bold),),
+              child: Text(
+                "레이튼의 소원 수리함",
+                style: TextStyle(fontFamily: "secrete", fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30),
@@ -35,100 +73,40 @@ class _MainState extends State<Main> {
                 height: 300,
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return PostList();
-                          }));
-                        },
-                        child: Container(
-                          width: 330,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white54,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left:20.0,bottom:3,right: 10),
-                                child: Image.asset('assets/images/gold-key.png',height: 50,),
-                              ),
-                              Text("소원 수리함 열기",style: TextStyle(fontFamily: "secrete",fontSize: 25,fontWeight: FontWeight.bold),),
-                              SizedBox(width: 50,)
-                            ],
-                          ),
-                        ),
-                      ),
+                    _buildButton(
+                      'assets/images/gold-key.png',
+                      "소원 수리함 열기",
+                      () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return PostList();
+                        }));
+                      },
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                        onTap: () {
-                           Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return AuthorList();
-                          }));
-                        },
-                        child: Container(
-                          width: 330,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white54,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left:20.0,bottom:3,right: 10),
-                                child: Image.asset('assets/images/writer.png',height: 50,),
-                              ),
-                              Text("작성자들 보기",style: TextStyle(fontFamily: "secrete",fontSize: 25,fontWeight: FontWeight.bold),),
-                              SizedBox(width: 50,)
-                            ],
-                          ),
-                        ),
-                      ),
+                    _buildButton(
+                      'assets/images/writer.png',
+                      "작성자들 보기",
+                      () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return AuthorList();
+                        }));
+                      },
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return Write();
-                          }));
-                        },
-                        child: Container(
-                          width: 330,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white54,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left:20.0,bottom:3,right: 10),
-                                child: Image.asset('assets/images/writing.png',height: 50,),
-                              ),
-                              Text("나도 써보기",style: TextStyle(fontFamily: "secrete",fontSize: 25,fontWeight: FontWeight.bold),),
-                              SizedBox(width: 50,)
-                            ],
-                          ),
-                        ),
-                      ),
+                    _buildButton(
+                      'assets/images/writing.png',
+                      "나도 써보기",
+                      () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return Write();
+                        }));
+                      },
                     ),
                   ],
-                )
+                ),
               ),
-            )
+            ),
           ],
-        )
-      )
+        ),
+      ),
     );
   }
-} 
+}
